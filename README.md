@@ -1,33 +1,73 @@
-Ruuvin reggaus:
+#Temppuruuvi RuuviTag reader script
 
-juha@JuhaMBP TemppuRuuvi $ az iot hub device-identity create --hub-name RuuviTagIoTHub --device-id MarkonRuuvi
-{
-  "authentication": {
-    "symmetricKey": {
-      "primaryKey": "lPQ+ZLrzwzjcVLSE0IzZ0teYr+VTv3iDXcJCfGpZoVY=",
-      "secondaryKey": "K0tQaKu+RRbniP6L6DWNKziYdCZMgiRUOC51GLsCP8c="
-    },
-    "type": "sas",
-    "x509Thumbprint": {
-      "primaryThumbprint": null,
-      "secondaryThumbprint": null
-    }
-  },
-  "capabilities": {
-    "iotEdge": false
-  },
-  "cloudToDeviceMessageCount": 0,
-  "connectionState": "Disconnected",
-  "connectionStateUpdatedTime": "0001-01-01T00:00:00",
-  "deviceId": "MarkonRuuvi",
-  "etag": "ODUyNjM5Mjkx",
-  "generationId": "636633855022326311",
-  "lastActivityTime": "0001-01-01T00:00:00",
-  "status": "enabled",
-  "statusReason": null,
-  "statusUpdatedTime": "0001-01-01T00:00:00"
-}
+##Prerequisites:
 
-az iot hub device-identity show-connection-string --hub-name RuuviTagIoTHub --device-id MarkonRuuvi --output table
+Connect raspberry pi to internet, and
 
-HostName=RuuviTagIoTHub.azure-devices.net;DeviceId=MarkonRuuvi;SharedAccessKey=lPQ+ZLrzwzjcVLSE0IzZ0teYr+VTv3iDXcJCfGpZoVY=
+1. Install node (programming environment and runtime; https://nodejs.org/en/)
+
+Node.js installation:
+
+- Open command line console on raspian and enter:
+
+```
+sudo apt install -y nodejs
+node -v
+```
+
+Should output something like:
+
+```
+v9.10.1
+```
+
+Enter:
+
+```
+npm -v
+```
+
+Should output something like:
+
+```
+3.10.10
+```
+
+## Installing the utility
+
+When both the "node" and "npm" commands work, then download, install and run the "Temppuruuvi"-app package in it's own directory:
+
+```
+mkdir Temppuruuvi
+cd Temppuruuvi
+wget https://s3.eu-central-1.amazonaws.com/temppuruuvi-releases/Temppuruuvi-0.0.1.zip
+unzip Temppuruuvi-0.0.1.zip
+npm install
+```
+
+This installs the packages required to run the utility. Next, edit (<b>SEE 1</b>) the file index.js and add the 
+Azure IoT device connection string:
+
+```
+// Replace this with the connectionID for the Azure IOT gw registered device
+
+let connectionString = 'HostName=RuuviTagIoTHub.azure-devices.net;DeviceId=MarkonRuuvi;SharedAccessKey=lPQ+ZLrzwzjcVLSE0IzZ0teYr+VTv3iDXcJCfGpZoVY=';
+```
+
+(Change the string between the single quote marks)
+
+When this is done, you can run the utility:
+
+```
+node index.js
+```
+
+The utility starts scanning for Ruuvi Tags in the area and once it finds one or more, starts to
+push data to IoT gateway for each one of them.
+
+## Notes
+
+The utility runs as long as you keep the console window open or you terminate it using CTRL-X to stop it.
+
+(<b>SEE 1</b>) Editing text files on Raspberry PI. You can use the instruction in here to get a text editor of your 
+choice: https://www.raspberrypi.org/documentation/linux/usage/text-editors.md
