@@ -45,7 +45,7 @@ unzip Temppuruuvi-0.0.1.zip
 npm install
 ```
 
-This installs the packages required to run the utility. Next, edit (<b>SEE 1</b>) the file index.js and add the 
+This installs the packages required to run the utility. In case you get an error in the "wget" command, read (<b>SEE1</b>). Next, edit (<b>SEE2</b>) the file index.js and add the 
 Azure IoT device connection string:
 
 ```
@@ -69,5 +69,11 @@ push data to IoT gateway for each one of them.
 
 The utility runs as long as you keep the console window open or you terminate it using CTRL-X to stop it.
 
-(<b>SEE 1</b>) Editing text files on Raspberry PI. You can use the instruction in here to get a text editor of your 
+(<b>SEE1</b>) Wget is an utility download files on command line. This may now be always installed. To install it on raspberry PI, run
+
+```
+sudo apt install wget
+```
+
+(<b>SEE2</b>) Editing text files on Raspberry PI. You can use the instruction in here to get a text editor of your 
 choice: https://www.raspberrypi.org/documentation/linux/usage/text-editors.md
