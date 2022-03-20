@@ -1,0 +1,4 @@
+#cronjobs for Temppuruuvi
+#perform connectionCheck, restart wifi if connection lost, every minute
+*/1 * * * * /usr/bin/sudo -H /home/pi/git/temppuruuvi/connectionCheck.sh >> /dev/null 2>&1
+0 0 * * * /home/pi/git/temppuruuvi/truncateFiles.sh >> /dev/null 2>&1
