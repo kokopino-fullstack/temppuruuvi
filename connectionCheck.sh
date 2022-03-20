@@ -1,6 +1,6 @@
 GATEWAY=192.168.1.1
 timestamp=$(date)
-logfile=~/connection.log
+logfile=/home/pi/connection.log
 touch $logfile
 ping -c4 192.168.1.1 > /dev/null
 
