@@ -10,7 +10,12 @@ then
   /sbin/ifdown 'wlan0'
   sleep 5
   /sbin/ifup --force 'wlan0'
-else
-  echo "$timestamp - Connection ok" >> $logfile
 fi
 
+ping -c4 opus > /dev/null
+
+if [ $? != 0 ]
+then
+  echo "$timestamp - Can't react zerotier test host, restarting zerotier service..." >> $logfile
+  sudo service zerotier-one restart
+fi
