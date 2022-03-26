@@ -32,16 +32,20 @@ sudo ping -c4 "$LOCAL_NETWORK_TEST_HOST" > /dev/null
 
 if [ $? != 0 ]
 then
-  echo "$timestamp - Can't react $GATEWAY, restarting wlan0..." >> $CONNECTION_LOG
+  echo "$timestamp - Can't react $GATEWAY, restarting wlan0..." | tee -a $CONNECTION_LOG
   /sbin/ifdown 'wlan0'
   sleep 5
   /sbin/ifup --force 'wlan0'
+else
+  echo "Local network connection up."
 fi
 
 sudo ping -c4 "$ZEROTIER_TEST_HOST" > /dev/null
 
 if [ $? != 0 ]
 then
-  echo "$timestamp - Can't react zerotier test host, restarting zerotier service..." >> $CONNECTION_LOG
+  echo "$timestamp - Can't react zerotier test host, restarting zerotier service..." | tee -a $CONNECTION_LOG
   sudo service zerotier-one restart
+else
+  echo "Zerotier network connection up."
 fi
