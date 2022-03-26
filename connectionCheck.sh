@@ -26,8 +26,9 @@ then
 fi
 
 timestamp=$(date)
+sudo setcap 'cap_net_raw=+ep' $(which ping)
 touch $CONNECTION_LOG
-ping -c4 "$LOCAL_NETWORK_TEST_HOST" > /dev/null
+sudo ping -c4 "$LOCAL_NETWORK_TEST_HOST" > /dev/null
 
 if [ $? != 0 ]
 then
@@ -37,7 +38,7 @@ then
   /sbin/ifup --force 'wlan0'
 fi
 
-ping -c4 "$ZEROTIER_TEST_HOST" > /dev/null
+sudo ping -c4 "$ZEROTIER_TEST_HOST" > /dev/null
 
 if [ $? != 0 ]
 then
