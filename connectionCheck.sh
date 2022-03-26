@@ -7,19 +7,19 @@ else
   exit 1
 fi
 
-if [ -z $CONNECTION_LOG]
+if [ -z $CONNECTION_LOG ]
 then
   echo "Missing config: CONNECTION_LOG"
   exit 1
 fi
 
-if [ -z $LOCAL_NETWORK_TEST_HOST]
+if [ -z $LOCAL_NETWORK_TEST_HOST ]
 then
   echo "Missing config: LOCAL_NETWORK_TEST_HOST"
   exit 1
 fi
 
-if [ -z $ZEROTIER_TEST_HOST]
+if [ -z $ZEROTIER_TEST_HOST ]
 then
   echo "Missing config: ZEROTIER_TEST_HOST"
   exit 1
