@@ -9,8 +9,8 @@
   "author": "Juha Kervinen <juha@kokopino.com>",
   "license": "ISC",
   "dependencies": {
-    "azure-iot-device": "1.4.1",
-    "azure-iot-device-mqtt": "1.4.1",
-    "node-ruuvitag" : "4.1.0"
+    "azure-iot-device": "^1.17.8",
+    "azure-iot-device-mqtt": "^1.15.8",
+    "node-ruuvitag": "^4.6.1"
   }
 }
