@@ -1,4 +1,4 @@
-= Register a new device identity to azure IOT hub
+# Register a new device identity to azure IOT hub
 
 TODO: add command line instructions for setting up the hub:
 https://learn.microsoft.com/en-us/azure/iot-hub/iot-hub-create-using-cli

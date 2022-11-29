@@ -1,6 +1,6 @@
-#Temppuruuvi RuuviTag reader script
+# Temppuruuvi RuuviTag reader script
 
-##Prerequisites:
+Prerequisites:
 
 Connect raspberry pi to internet, and
 
@@ -17,14 +17,15 @@ npm -v
 ```
 
 ## Installing the utility
-
-1. Clone the repository
+Clone the repository
 
 ```
 git clone git@github.com:kokopino-fullstack/temppuruuvi.git
 ```
 
-== Configure connection to Azure IoT Hub
+## Configure connection to cloud storage
+
+[Instructions for Azure IOT hub](/doc/README-Azure.md)
 
 ```
 node index.js "HostName=temppuruuvi.azure-devices.net;DeviceId=temppuruuvi;SharedAccessKey=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx="
