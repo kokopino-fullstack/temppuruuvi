@@ -11,6 +11,6 @@
   "dependencies": {
     "azure-iot-device": "^1.17.8",
     "azure-iot-device-mqtt": "^1.15.8",
-    "node-ruuvitag": "^4.6.1"
+    "node-ruuvitag": "4.7.0"
   }
 }
